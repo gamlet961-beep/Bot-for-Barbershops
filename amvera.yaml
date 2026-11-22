@@ -1,0 +1,12 @@
+# Конфигурация Amvera (docs.amvera.ru → «Файл конфигурации», «Запуск», «Docker»).
+# Важно: наличие amvera.yaml переключает запуск на «по конфигурации» —
+# без явной meta.environment платформа может выбрать не тот инструмент
+# (стандартный Python вместо Docker), поэтому среда задана явно.
+# Сборка идёт по корневому Dockerfile; порт 8080 — health-сервер бота;
+# база живёт в /data (DATABASE_PATH=/data/barber.db, WAL включён в коде).
+meta:
+  environment: docker
+  toolchain:
+    name: docker
+run:
+  containerPort: 8080
